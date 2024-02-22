@@ -40,15 +40,7 @@ require("lazy").setup({
                     additional_vim_regex_highlighting = false,
                 },
                 indent = { enable = true, disable = { "yaml" } },
-                rainbow = {
-                    enable = true,
-                    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-                    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-                    max_file_lines = nil, -- Do not enable for files with more than n lines, int
-                    -- colors = {}, -- table of hex strings
-                    -- termcolors = {} -- table of colour name strings
-                }
-              })
+            })
         end
     },
     {
@@ -73,6 +65,7 @@ require("lazy").setup({
             })
         end
     },
+    {"folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}}
 })
 
 local builtin = require('telescope.builtin')
@@ -83,3 +76,5 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fr', builtin.resume, {})
 
 require('lsp')
+
+require('colors')
