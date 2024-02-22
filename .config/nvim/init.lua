@@ -1,9 +1,11 @@
-vim.cmd([[
-    :set tabstop=4
-    :set shiftwidth=4
-    :set expandtab
-    :set relativenumber
-]])
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+if vim.fn.exists('+fixeol') then
+    vim.opt.fixeol = false
+end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -29,7 +31,7 @@ require("lazy").setup({
 
             configs.setup ({
                 -- Add a language of your choice
-                ensure_installed = {"cpp", "python", "lua", "java", "javascript", },
+                ensure_installed = {"cpp", "python", "lua", "java", "javascript", "kotlin" },
                 sync_install = false,
                 ignore_install = { "" }, -- List of parsers to ignore installing
                 highlight = {
@@ -59,7 +61,18 @@ require("lazy").setup({
     {'neovim/nvim-lspconfig'},
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/nvim-cmp'},
-    {'L3MON4D3/LuaSnip'}
+    {'L3MON4D3/LuaSnip'},
+    {
+        "Exafunction/codeium.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+        config = function()
+            require("codeium").setup({
+            })
+        end
+    },
 })
 
 local builtin = require('telescope.builtin')
@@ -67,5 +80,6 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>fr', builtin.resume, {})
 
 require('lsp')

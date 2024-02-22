@@ -37,6 +37,7 @@ cmp.setup({
     {name = 'nvim_lua'},
     {name = 'luasnip', keyword_length = 2},
     {name = 'buffer', keyword_length = 3},
+    { name = "codeium" },
   },
   formatting = lsp_zero.cmp_format(),
   mapping = cmp.mapping.preset.insert({
