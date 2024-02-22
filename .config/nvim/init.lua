@@ -31,7 +31,7 @@ require("lazy").setup({
 
             configs.setup ({
                 -- Add a language of your choice
-                ensure_installed = {"cpp", "python", "lua", "java", "javascript", "kotlin" },
+                ensure_installed = {"cpp", "python", "lua", "java", "javascript", "kotlin", "pug"},
                 sync_install = false,
                 ignore_install = { "" }, -- List of parsers to ignore installing
                 highlight = {
