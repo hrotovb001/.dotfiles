@@ -65,5 +65,9 @@ require("lazy").setup({
                 dim = false              -- dim all other characters if set to true (recommended!)
             }
         end
+    },
+    { 
+        "romainl/vim-cool",
+        event = { "BufReadPre", "BufNewFile" },
     }
 })
