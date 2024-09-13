@@ -2,3 +2,5 @@ import = ["~/.config/alacritty/tokyonight_storm.toml"]
 
 [window]
 opacity = 0.9
+decorations = "None"
+startup_mode = "Maximized"
